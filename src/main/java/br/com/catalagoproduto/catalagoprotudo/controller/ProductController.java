@@ -38,7 +38,7 @@ public class ProductController {
 
     @PutMapping("products/{id}")
     @Operation(summary = "updating a product")
-    public ResponseEntity<ProductDTO> update(@RequestBody ProductDTO productDto,
+    public ResponseEntity<ProductDTO> update(@Valid @RequestBody ProductDTO productDto,
                                              @PathVariable("id") Long id) throws Exception {
         return new ResponseEntity<>(this.convertToDto(iProductService
                 .update(this.convertToEntity(productDto), id)), HttpStatus.OK);

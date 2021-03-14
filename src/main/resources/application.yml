@@ -11,6 +11,9 @@ spring:
   jpa:
     show-sql: true
 
+server:
+  port: 9999
+
 #Variables
 application-description: '@project.description@'
 application-title: Spring Rest API - Catálago de Produto

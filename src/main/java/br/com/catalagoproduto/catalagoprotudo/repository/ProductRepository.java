@@ -19,9 +19,9 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> findByPriceLessThanEqual(BigDecimal maxPrice);
 
     @Query("SELECT p FROM Product p WHERE " +
-            "(:name IS NULL OR p.name LIKE %:name%) " +
-            "OR (:description IS NULL OR p.description LIKE %:description%) " +
-            "AND (:minPrice IS NULL OR p.price >= :minPrice) " +
+            "((:name IS NULL OR upper( p.name) LIKE UPPER(CONCAT('%',:name,'%'))) " +
+            "OR (:description IS NULL OR UPPER(p.description)  LIKE UPPER(CONCAT('%',:description,'%')))) " +
+            "AND (:minPrice IS NULL OR p.price >= :minPrice)" +
             "AND (:maxPrice IS NULL OR p.price <= :maxPrice)")
     List<Product> searchFiltered(@Param("name") String name,
                                  @Param("description") String description,

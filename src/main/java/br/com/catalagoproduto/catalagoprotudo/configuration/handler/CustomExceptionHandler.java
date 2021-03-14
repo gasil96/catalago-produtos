@@ -25,21 +25,23 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     @ResponseBody
     @ExceptionHandler(ProducNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    ApiError produtctNotFoundHandler(ProducNotFoundException ex) {
-        return new ApiError(404, ex.getMessage());
+    protected void produtctNotFoundHandler() {
+        /*
+          No body respons
+          */
     }
 
     @ResponseBody
     @ExceptionHandler(UnssuportedValueMinMaxException.class)
     @ResponseStatus(HttpStatus.CONFLICT)
-    ApiError unssuporteValueMinMaxException(UnssuportedValueMinMaxException ex) {
+    protected ApiError unssuporteValueMinMaxException(UnssuportedValueMinMaxException ex) {
         return new ApiError(409, ex.getMessage());
     }
 
     @ResponseBody
     @ExceptionHandler(NumberFormatException.class)
     @ResponseStatus(HttpStatus.CONFLICT)
-    ApiError unssuporteValueMinMaxException(NumberFormatException ex) {
+    protected ApiError unssuporteValueMinMaxException(NumberFormatException ex) {
         return new ApiError(409, ex.getMessage());
     }
 

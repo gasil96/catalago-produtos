@@ -54,11 +54,8 @@ public class ProductServiceImpl implements IProductService {
             if (minPrice.compareTo(maxPrice) > 0)
                 throw new UnssuportedValueMinMaxException(minPrice, maxPrice);
 
-        String name = q;
 
-        String description = q;
-
-        return productRepository.searchFiltered(name, description, minPrice, maxPrice);
+        return productRepository.searchFiltered(q, q, minPrice, maxPrice);
     }
 
 
