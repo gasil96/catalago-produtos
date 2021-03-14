@@ -1,1 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:runtimedb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  jpa:
+    show-sql: true
 
+#Variables
+application-description: '@project.description@'
+application-title: Spring Rest API - Catálago de Produto
+application-version: '@project.version@'

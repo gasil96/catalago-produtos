@@ -1,13 +1,9 @@
 package br.com.catalagoproduto.catalagoprotudo.domain.model;
 
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
-import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.time.LocalDateTime;
@@ -15,28 +11,28 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 public abstract class Audit {
 
-    @CreatedDate
     @Column(name = "DATE_CREATED")
     private LocalDateTime created;
 
-    @LastModifiedDate
     @Column(name = "DATE_CHANGED")
     private LocalDateTime changed;
 
     @Column(name = "HOTSTNAME_CREATED_IP")
-    private String userCreatedIp;
+    private String userCreatedHostname;
 
     @Column(name = "HOTSTNAME_CHANGED_IP")
-    private String userChangedIp;
+    private String userChangedHostname;
 
     @PrePersist
     public void prePersist() throws UnknownHostException {
-        userCreatedIp = InetAddress.getLocalHost().getHostName();
+        userCreatedHostname = InetAddress.getLocalHost().getHostName();
+        created = LocalDateTime.now();
     }
 
     @PreUpdate
     public void preUpdate() throws UnknownHostException {
-        userChangedIp = InetAddress.getLocalHost().getHostName();
+        userChangedHostname = InetAddress.getLocalHost().getHostName();
+        changed = LocalDateTime.now();
     }
 
     public LocalDateTime getCreated() {
@@ -55,19 +51,19 @@ public abstract class Audit {
         this.changed = changed;
     }
 
-    public String getUserCreatedIp() {
-        return userCreatedIp;
+    public String getUserCreatedHostname() {
+        return userCreatedHostname;
     }
 
-    public void setUserCreatedIp(String userCreatedIp) {
-        this.userCreatedIp = userCreatedIp;
+    public void setUserCreatedHostname(String userCreatedHostname) {
+        this.userCreatedHostname = userCreatedHostname;
     }
 
-    public String getUserChangedIp() {
-        return userChangedIp;
+    public String getUserChangedHostname() {
+        return userChangedHostname;
     }
 
-    public void setUserChangedIp(String userChangedIp) {
-        this.userChangedIp = userChangedIp;
+    public void setUserChangedHostname(String userChangedHostname) {
+        this.userChangedHostname = userChangedHostname;
     }
 }

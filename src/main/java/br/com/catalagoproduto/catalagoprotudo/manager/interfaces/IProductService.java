@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface IProductService extends ICrudService<Product> {
 
-    List<Product> search(String q, BigDecimal minPrice, BigDecimal maxPrice);
+    List<Product> search(BigDecimal minPrice, BigDecimal maxPrice, String q);
 
 }
