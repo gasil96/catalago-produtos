@@ -26,6 +26,15 @@ public class ProductValidatorRestApplicationTests {
     private ProductController productController;
 
     @Test
+    @Order(6)
+    void caseDeleteByIdSucess() {
+        int results = Objects.requireNonNull(productController.findAll().getBody()).size();
+        productController.deleteById(9991L);
+        Assertions.assertEquals(Objects.requireNonNull(productController.findAll().getBody()).size(), results-1);
+
+    }
+
+    @Test
     @Order(1)
     void casePostSucess() {
         ProductDTO productDTO = new ProductDTO();
@@ -88,7 +97,7 @@ public class ProductValidatorRestApplicationTests {
          * File 'data.sql' in path resource contains 10 records + 2 add in before tests
          * */
         Assertions.assertEquals(results.getStatusCode(), HttpStatus.OK);
-        Assertions.assertEquals(results.getBody().size(), 12);
+        Assertions.assertEquals(Objects.requireNonNull(results.getBody()).size(), 11);
 
     }
 
@@ -102,8 +111,7 @@ public class ProductValidatorRestApplicationTests {
          * */
 
         Assertions.assertEquals(results.getStatusCode(), HttpStatus.OK);
-        Assertions.assertEquals(results.getBody().size(), 2);
-
+        Assertions.assertEquals(Objects.requireNonNull(results.getBody()).size(), 2);
 
         ResponseEntity<List<ProductDTO>> resulsWithParameter =
                 productController.search(new BigDecimal(100), new BigDecimal(200), null);
@@ -115,13 +123,5 @@ public class ProductValidatorRestApplicationTests {
         Assertions.assertEquals(resulsWithParameter.getBody().size(), 5);
     }
 
-//    @Test
-//    @Order(6)
-//    void caseDeleteByIdSucess() {
-//        Integer results = productController.findAll().getBody().size();
-//        productController.deleteById(9991L);
-//        Assertions.assertEquals(productController.findAll().getBody().size(), results-1);
-//
-//    }
 
 }

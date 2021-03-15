@@ -8,10 +8,10 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
-@Data
+@Data // Lombok Annotation
 public class ProductDTO {
 
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY) // View only Return
     private String id;
 
     @NotBlank(message = "Name is required and not empty")
