@@ -2,6 +2,9 @@ package br.com.catalagoproduto.catalagoprotudo.configuration.handler;
 
 public class ApiError {
 
+    /**
+     * Custom Response Body for ERROR
+     * */
     private Integer status_code;
     private String message;
 
