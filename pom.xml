@@ -10,9 +10,9 @@
     </parent>
     <groupId>br.com.catalagoproduto</groupId>
     <artifactId>catalagoprotudo</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>catalagoproduto</name>
-    <description>API Catalogo Produto</description>
+    <description>API Catálogo de Produto</description>
     <properties>
         <java.version>11</java.version>
     </properties>
