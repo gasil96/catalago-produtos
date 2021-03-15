@@ -27,7 +27,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     protected void produtctNotFoundHandler() {
         /*
-          No body respons
+          No body response
           */
     }
 
