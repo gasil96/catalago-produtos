@@ -57,6 +57,14 @@ public class ProductController {
         return new ResponseEntity<>(this.convertToDto(iProductService.findById(id)), HttpStatus.OK);
     }
 
+    @GetMapping("all-products")
+    @Operation(summary = "product list protected")
+    public ResponseEntity<List<ProductDTO>> findAllSecurity() {
+        log.info("find by all products in database...");
+        return new ResponseEntity<>(iProductService.findAll().stream()
+                .map(this::convertToDto).collect(Collectors.toList()), HttpStatus.OK);
+    }
+
     @GetMapping("products")
     @Operation(summary = "product list")
     public ResponseEntity<List<ProductDTO>> findAll() {

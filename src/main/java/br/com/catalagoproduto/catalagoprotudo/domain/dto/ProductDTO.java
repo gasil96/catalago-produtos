@@ -18,7 +18,6 @@ public class ProductDTO {
 
     @NotBlank(message = "Name is required and not empty")
     private String name;
-
     @NotBlank(message = "Name is required and not empty")
     private String description;
 
