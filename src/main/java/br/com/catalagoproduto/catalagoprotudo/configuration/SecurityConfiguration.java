@@ -29,13 +29,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests()
-                .antMatchers("/products/**").permitAll()
-                .antMatchers("/all-products/").authenticated()
+                .antMatchers("/products-save/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .httpBasic()
-                .authenticationEntryPoint(authenticationEntryPoint);
-
+                .httpBasic();
     }
 
     @Bean

@@ -33,7 +33,7 @@ public class ProductController {
     @Autowired
     private ModelMapper modelMapper;
 
-    @PostMapping("products")
+    @PostMapping("products-save")
     @Operation(summary = "creating a product")
     public ResponseEntity<ProductDTO> save(@Valid @RequestBody ProductDTO productDto) {
         log.info("Save request body -> {}", productDto);
